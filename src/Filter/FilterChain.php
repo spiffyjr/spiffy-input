@@ -34,11 +34,11 @@ final class FilterChain implements Filter
     /**
      * Cloned to prevent altering of the internal queue.
      * 
-     * @return \SplPriorityQueue
+     * @return \SplPriorityQueue|null
      */
-    public function getFilters()
+    public function filters()
     {
-        return clone $this->filters;
+        return $this->filters ? clone $this->filters : null;
     }
 
     /**
@@ -47,7 +47,13 @@ final class FilterChain implements Filter
      */
     public function filter($input)
     {
-        foreach ($this->getFilters() as $f) {
+        $filters = $this->filters();
+        
+        if (null === $filters) {
+            return $input;
+        }
+        
+        foreach ($this->filters() as $f) {
             if ($f instanceof Filter) {
                 $input = $f->filter($input);
             } elseif ($f instanceof \Closure) {

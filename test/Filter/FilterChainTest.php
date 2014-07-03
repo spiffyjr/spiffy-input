@@ -20,23 +20,25 @@ class FilterChainTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
-     * @covers ::add, ::addClosure, ::getFilters
+     * @covers ::add, ::addClosure, ::filters
      */
-    public function testAddGetFilters()
+    public function testAddAndFilters()
     {
         $f = new FilterChain();
+        $this->assertNull($f->filters());
+        
         $f->add(function() { return true; });
         $f->add(function() { return false; });
         
-        $this->assertCount(2, $f->getFilters());
+        $this->assertCount(2, $f->filters());
         
         $f->add(new TestFilter());
         
-        $this->assertCount(3, $f->getFilters());
+        $this->assertCount(3, $f->filters());
 
         // Test cloning
-        $first = $f->getFilters();
-        $second = $f->getFilters();
+        $first = $f->filters();
+        $second = $f->filters();
 
         $this->assertEquals($first, $second);
         $this->assertNotSame($first, $second);
@@ -48,6 +50,8 @@ class FilterChainTest extends \PHPUnit_Framework_TestCase
     public function testFilter()
     {
         $f = new FilterChain();
+        $this->assertSame('foo', $f->filter('foo'));        
+        
         $f->add(function() { return null; });
         
         $this->assertNull($f->filter(true));

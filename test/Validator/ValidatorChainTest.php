@@ -20,23 +20,25 @@ class ValidatorChainTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
-     * @covers ::add, ::addClosure, ::getValidators
+     * @covers ::add, ::addClosure, ::validators
      */
-    public function testAddGetValidators()
+    public function testAddAndValidators()
     {
         $v = new ValidatorChain();
+        $this->assertNull($v->validators());
+        
         $v->add(function() { return true; });
         $v->add(function() { return false; });
         
-        $this->assertCount(2, $v->getValidators());
+        $this->assertCount(2, $v->validators());
         
         $v->add(new TestValidator());
         
-        $this->assertCount(3, $v->getValidators());
+        $this->assertCount(3, $v->validators());
 
         // Test cloning
-        $first = $v->getValidators();
-        $second = $v->getValidators();
+        $first = $v->validators();
+        $second = $v->validators();
         
         $this->assertEquals($first, $second);
         $this->assertNotSame($first, $second);

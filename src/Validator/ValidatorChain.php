@@ -34,11 +34,11 @@ final class ValidatorChain implements Validator
     /**
      * Cloned to prevent altering of the internal queue.
      * 
-     * @return \SplPriorityQueue
+     * @return \SplPriorityQueue|null
      */
-    public function getValidators()
+    public function validators()
     {
-        return clone $this->validators;
+        return $this->validators ? clone $this->validators : null;
     }
 
     /**
@@ -47,7 +47,13 @@ final class ValidatorChain implements Validator
      */
     public function valid($input)
     {
-        foreach ($this->getValidators() as $v) {
+        $validators = $this->validators();
+        
+        if (null === $validators) {
+            return true;
+        }
+        
+        foreach ($validators as $v) {
             if ($v instanceof Validator) {
                 if (!$v->valid($input)) {
                     return false;
