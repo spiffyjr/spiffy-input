@@ -1,6 +1,6 @@
 <?php
  
-namespace Spiffy\Validate;
+namespace Spiffy\Input\Validator;
 
 interface Validator
 {

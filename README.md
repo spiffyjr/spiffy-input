@@ -1,13 +1,13 @@
-# Spiffy\Validate
+# Spiffy\Input
 
-[![Build Status](https://travis-ci.org/spiffyjr/spiffy-validate.svg)](https://travis-ci.org/spiffyjr/spiffy-validate)
-[![Code Coverage](https://scrutinizer-ci.com/g/spiffyjr/spiffy-validate/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/spiffyjr/spiffy-validate/?branch=develop)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spiffyjr/spiffy-validate/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/spiffyjr/spiffy-validate/?branch=develop)
+[![Build Status](https://travis-ci.org/spiffyjr/spiffy-input.svg)](https://travis-ci.org/spiffyjr/spiffy-input)
+[![Code Coverage](https://scrutinizer-ci.com/g/spiffyjr/spiffy-input/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/spiffyjr/spiffy-input/?branch=develop)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spiffyjr/spiffy-input/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/spiffyjr/spiffy-input/?branch=develop)
 
 ## Installation
 
-Spiffy\Validate can be installed using composer which will setup any autoloading for you.
+Spiffy\Input can be installed using composer which will setup any autoloading for you.
 
-`composer require spiffy/spiffy-validate`
+`composer require spiffy/spiffy-input`
 
 Additionally, you can download or clone the repository and setup your own autoloading.

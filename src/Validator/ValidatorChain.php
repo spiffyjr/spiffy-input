@@ -1,6 +1,6 @@
 <?php
  
-namespace Spiffy\Validate;
+namespace Spiffy\Input\Validator;
 
 final class ValidatorChain implements Validator
 {
@@ -23,7 +23,9 @@ final class ValidatorChain implements Validator
     public function add($validator, $priority = 0)
     {
         if (!$validator instanceof \Closure && !$validator instanceof Validator) {
-            throw new Exception\InvalidValidatorException('Validator must be a Closure or Spiffy\Validate\Validator');
+            throw new Exception\InvalidValidatorException(
+                'Validator must be a Closure or Spiffy\Input\Validator\Validator'
+            );
         }
         $this->insert($validator, $priority);
         return $this;

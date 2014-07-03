@@ -1,8 +1,8 @@
 <?php
  
-namespace Spiffy\Validate\TestAsset;
+namespace Spiffy\Input\Validator\TestAsset;
 
-use Spiffy\Validate\Validator;
+use Spiffy\Input\Validator\Validator;
 
 class TestValidator implements Validator
 {

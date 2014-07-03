@@ -6,7 +6,7 @@
             "email": "theman@spiffyjr.me"
         }
     ],
-    "description": "Spiffy\\Validate is a light-weight, HHVM compatible, and dependency free validation library.",
+    "description": "Spiffy\\Input is a light-weight, HHVM compatible, and dependency free input filtering and validation library.",
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=5.4"
@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Spiffy\\Validate\\": [
+            "Spiffy\\Input\\": [
                 "src/",
                 "test/"
             ]

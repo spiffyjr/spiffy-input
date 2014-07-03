@@ -1,17 +1,17 @@
 <?php
  
-namespace Spiffy\Validate;
+namespace Spiffy\Input\Validator;
 
-use Spiffy\Validate\TestAsset\TestValidator;
+use Spiffy\Input\Validator\TestAsset\TestValidator;
 
 /**
- * @coversDefaultClass \Spiffy\Validate\ValidatorChain
+ * @coversDefaultClass \Spiffy\Input\Validator\ValidatorChain
  */
 class ValidatorChainTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @expectedException \Spiffy\Validate\Exception\InvalidValidatorException
-     * @expectedExceptionMessage Validator must be a Closure or Spiffy\Validate\Validator 
+     * @expectedException \Spiffy\Input\Validator\Exception\InvalidValidatorException
+     * @expectedExceptionMessage Validator must be a Closure or Spiffy\Input\Validator\Validator 
      */
     public function testAddThrowsExceptionForInvalidValidator()
     {

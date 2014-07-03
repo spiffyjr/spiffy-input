@@ -10,7 +10,7 @@
         </whitelist>
     </filter>
     <testsuites>
-        <testsuite name="Spiffy\Validate">
+        <testsuite name="Spiffy\Input\Validator">
             <directory>.</directory>
         </testsuite>
     </testsuites>

@@ -1,9 +1,9 @@
 <?php
 
-namespace Spiffy\Validate;
+namespace Spiffy\Input\Validator;
 
 /**
- * @coversDefaultClass \Spiffy\Validate\EmailValidator
+ * @coversDefaultClass \Spiffy\Input\Validator\EmailValidator
  */
 class EmailValidatorTest extends \PHPUnit_Framework_TestCase
 {

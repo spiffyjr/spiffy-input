@@ -1,6 +1,6 @@
 <?php
  
-namespace Spiffy\Validate\Exception;
+namespace Spiffy\Input\Validator\Exception;
 
 final class InvalidValidatorException extends \InvalidArgumentException
 {

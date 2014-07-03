@@ -1,9 +1,9 @@
 <?php
 
-namespace Spiffy\Validate;
+namespace Spiffy\Input\Validator;
 
 /**
- * @coversDefaultClass \Spiffy\Validate\BooleanValidator
+ * @coversDefaultClass \Spiffy\Input\Validator\BooleanValidator
  */
 class BooleanValidatorTest extends \PHPUnit_Framework_TestCase
 {
