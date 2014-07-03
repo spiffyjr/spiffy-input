@@ -2,6 +2,6 @@
  
 namespace Spiffy\Validate\Exception;
 
-class InvalidValidatorException extends \InvalidArgumentException
+final class InvalidValidatorException extends \InvalidArgumentException
 {
 }

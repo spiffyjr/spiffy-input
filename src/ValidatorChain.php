@@ -11,14 +11,8 @@ final class ValidatorChain implements Validator
      * @var int
      */
     protected $queueOrder = PHP_INT_MAX;
-    
     /** @var \SplPriorityQueue */
     private $validators;
-    
-    public function __construct()
-    {
-        $this->validators = new \SplPriorityQueue();
-    }
 
     /**
      * @param \Closure|Validator $validator
@@ -69,6 +63,9 @@ final class ValidatorChain implements Validator
      */
     private function insert($object, $priority)
     {
+        if (!$this->validators instanceof \SplPriorityQueue) {
+            $this->validators = new \SplPriorityQueue();
+        }
         $this->validators->insert($object, [$priority, $this->queueOrder--]);
     }
 }
