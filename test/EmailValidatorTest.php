@@ -7,6 +7,9 @@ namespace Spiffy\Validate;
  */
 class EmailValidatorTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @covers ::valid
+     */
     public function testValid()
     {
         $v = new EmailValidator();
