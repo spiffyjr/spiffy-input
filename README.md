@@ -1,6 +1,6 @@
 # Spiffy\Input
 
-[![Build Status](https://travis-ci.org/spiffyjr/spiffy-input.svg)](https://travis-ci.org/spiffyjr/spiffy-input)
+[![Build Status](https://travis-ci.org/spiffyjr/spiffy-input.svg?branch=develop)](https://travis-ci.org/spiffyjr/spiffy-input)
 [![Code Coverage](https://scrutinizer-ci.com/g/spiffyjr/spiffy-input/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/spiffyjr/spiffy-input/?branch=develop)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spiffyjr/spiffy-input/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/spiffyjr/spiffy-input/?branch=develop)
 

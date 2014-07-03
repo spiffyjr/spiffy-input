@@ -33,6 +33,13 @@ class ValidatorChainTest extends \PHPUnit_Framework_TestCase
         $v->add(new TestValidator());
         
         $this->assertCount(3, $v->getValidators());
+
+        // Test cloning
+        $first = $v->getValidators();
+        $second = $v->getValidators();
+        
+        $this->assertEquals($first, $second);
+        $this->assertNotSame($first, $second);
     }
 
     /**
