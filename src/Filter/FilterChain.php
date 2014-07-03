@@ -53,7 +53,7 @@ final class FilterChain implements Filter
             return $input;
         }
         
-        foreach ($this->filters() as $f) {
+        foreach ($filters as $f) {
             if ($f instanceof Filter) {
                 $input = $f->filter($input);
             } elseif ($f instanceof \Closure) {
