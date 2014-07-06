@@ -2,8 +2,11 @@
  
 namespace Spiffy\Input\Validator;
 
-final class EmailValidator implements Validator
+final class EmailValidator extends AbstractValidator
 {
+    /** @var string */
+    protected $errorMessage = 'Must be a valid email address';
+    
     /**
      * {@inheritDoc}
      */

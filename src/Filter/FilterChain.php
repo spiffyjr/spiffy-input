@@ -11,6 +11,8 @@ final class FilterChain implements Filter
      * @var int
      */
     protected $queueOrder = PHP_INT_MAX;
+    /** @var FilterFactory */
+    private $factory;
     /** @var \SplPriorityQueue */
     private $filters;
 
@@ -22,12 +24,7 @@ final class FilterChain implements Filter
      */
     public function add($filter, $priority = 0)
     {
-        if (!$filter instanceof \Closure && !$filter instanceof Filter) {
-            throw new Exception\InvalidFilterException(
-                'Filter must be a Closure or Spiffy\Input\Filter\Filter'
-            );
-        }
-        $this->insert($filter, $priority);
+        $this->insert($this->factory()->create($filter), $priority);
         return $this;
     }
 
@@ -73,5 +70,16 @@ final class FilterChain implements Filter
             $this->filters = new \SplPriorityQueue();
         }
         $this->filters->insert($object, [$priority, $this->queueOrder--]);
+    }
+
+    /**
+     * @return FilterFactory
+     */
+    private function factory()
+    {
+        if (!$this->factory instanceof FilterFactory) {
+            $this->factory = new FilterFactory();
+        }
+        return $this->factory;
     }
 }

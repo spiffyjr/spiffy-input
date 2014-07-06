@@ -2,8 +2,11 @@
  
 namespace Spiffy\Input\Validator;
 
-final class BooleanValidator implements Validator
+final class BooleanValidator extends AbstractValidator
 {
+    /** @var string */
+    protected $errorMessage = 'Must be a boolean';
+    
     /**
      * {@inheritDoc}
      */

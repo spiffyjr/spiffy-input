@@ -5,11 +5,6 @@ namespace Spiffy\Input;
 interface Input
 {
     /**
-     * @return string
-     */
-    public function getName();
-
-    /**
      * @return mixed
      */
     public function getRawValue();
@@ -26,9 +21,14 @@ interface Input
     public function getValue();
 
     /**
+     * @return array
+     */
+    public function getErrors();
+
+    /**
      * @return bool
      */
-    public function valid();
+    public function isValid();
     
     /**
      * @return \Spiffy\Input\Filter\FilterChain

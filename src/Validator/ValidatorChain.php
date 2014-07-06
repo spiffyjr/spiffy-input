@@ -11,23 +11,29 @@ final class ValidatorChain implements Validator
      * @var int
      */
     protected $queueOrder = PHP_INT_MAX;
+    /** @var array */
+    private $errors = [];
+    /** @var ValidatorFactory */
+    private $factory;
     /** @var \SplPriorityQueue */
     private $validators;
 
     /**
-     * @param \Closure|Validator $validator
+     * @return array
+     */
+    public function getErrors()
+    {
+        return $this->errors;
+    }
+
+    /**
+     * @param mixed $validator
      * @param int $priority
-     * @throws Exception\InvalidValidatorException
      * @return $this
      */
     public function add($validator, $priority = 0)
     {
-        if (!$validator instanceof \Closure && !$validator instanceof Validator) {
-            throw new Exception\InvalidValidatorException(
-                'Validator must be a Closure or Spiffy\Input\Validator\Validator'
-            );
-        }
-        $this->insert($validator, $priority);
+        $this->insert($this->factory()->create($validator), $priority);
         return $this;
     }
 
@@ -53,18 +59,22 @@ final class ValidatorChain implements Validator
             return true;
         }
         
+        $result = true;
         foreach ($validators as $v) {
             if ($v instanceof Validator) {
                 if (!$v->valid($input)) {
-                    return false;
+                    if ($v instanceof ErrorMessageAware) {
+                        $this->errors[] = $v->getErrorMessage();
+                    }
+                    $result = false;
                 }
             } elseif ($v instanceof \Closure) {
                 if (!$v($input)) {
-                    return false;
+                    $result = false;
                 }
             }
         }
-        return true;
+        return $result;
     }
 
     /**
@@ -77,5 +87,16 @@ final class ValidatorChain implements Validator
             $this->validators = new \SplPriorityQueue();
         }
         $this->validators->insert($object, [$priority, $this->queueOrder--]);
+    }
+
+    /**
+     * @return ValidatorFactory
+     */
+    private function factory()
+    {
+        if (!$this->factory instanceof ValidatorFactory) {
+            $this->factory = new ValidatorFactory();
+        }
+        return $this->factory;
     }
 }

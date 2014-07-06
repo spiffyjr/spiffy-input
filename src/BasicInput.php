@@ -7,8 +7,6 @@ use Spiffy\Input\Validator\ValidatorChain;
 
 final class BasicInput implements Input
 {
-    /** @var string */
-    private $name;
     /** @var  \Spiffy\Input\Filter\FilterChain */
     private $filters;
     /** @var  \Spiffy\Input\Validator\ValidatorChain */
@@ -19,19 +17,11 @@ final class BasicInput implements Input
     private $rawValue;
 
     /**
-     * @param $name
+     * @return array
      */
-    public function __construct($name)
+    public function getErrors()
     {
-        $this->name = $name;
-    }
-    
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
+        return $this->validators()->getErrors();
     }
 
     /**
@@ -63,7 +53,7 @@ final class BasicInput implements Input
     /**
      * @return bool
      */
-    public function valid()
+    public function isValid()
     {
         $value = $this->value = $this->filters()->filter($this->rawValue);
         return $this->validators()->valid($value);
